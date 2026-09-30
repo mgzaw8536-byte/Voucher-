@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="my">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customize System</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="logo.png">
+
+
+<script src="qrcode-local.js"></script>
+
+
+<script src="script.js" defer></script>
+<script src="ios-compat.js" defer></script>
+
+
+</head>
+
+
+<body>
+<div id="iosSplash" aria-label="Splash Screen">
+  <img id="iosSplashImage" src="mz_splash.jpg" alt="">
+  <video id="iosSplashVideo" playsinline muted></video>
+</div>
+
+
+<div class="header">
+
+
+<img src="logo_interface_default_white.png" class="logo" onerror="this.style.display='none'">
+
+
+<h1 class="business-name">Name</h1>
+
+
+<p class="business-subtitle">title</p>
+<p id="applicationNameText" class="application-name">Customize System</p>
+
+
+</div>
+
+
+
+<div class="card admin-entry-card">
+<button class="admin-button" onclick="openAdminControl()" type="button">⚙️ Admin Control Center</button>
+</div>
+<div class="card admin-panel" id="adminPanel" style="display:none;">
+<h2>⚙️ Admin Control Center</h2>
+<p class="admin-note">ဒီနေရာကနေ Software ရဲ့ အဓိက Setting တွေကို ပြင်နိုင်ပါတယ်။ Setting တွေက ဒီဖုန်း / ဒီ Browser ထဲမှာပဲ သိမ်းထားပါမယ်။</p>
+<div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('businessVoucher')">🏢 Business / Voucher <span class="group-chevron" id="chevron-businessVoucher">＋</span></button><div class="admin-group-content" id="group-businessVoucher" style="display:none;">
+
+<label>Business Name</label>
+<input id="adminBusinessName" placeholder="MZ (CREATIVE ART)" type="text"/>
+<label>Subtitle</label>
+<input id="adminSubtitle" placeholder="PHOTO &amp; VIDEO SERVICE" type="text"/>
+<label>Voucher Prefix</label>
+<input id="adminVoucherPrefix" maxlength="12" placeholder="MZ-" type="text"/>
+<label>Currency</label>
+<input id="adminCurrency" maxlength="10" placeholder="MMK" type="text"/>
+</div></div><div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('design')">🎨 Design <span class="group-chevron" id="chevron-design">＋</span></button><div class="admin-group-content" id="group-design" style="display:none;">
+
+<label>Background Color</label>
+<input id="adminBgColor" type="color" value="#f2f2f2"/>
+<label>Primary Color</label>
+<input id="adminPrimaryColor" type="color" value="#FFD700"/>
+<label>Dark Color</label>
+<input id="adminDarkColor" type="color" value="#111111"/>
+<label>Logo</label>
+<input accept="image/png,image/jpeg,image/webp" id="adminLogoFile" type="file" onchange="previewAdminLogo(event)"/>
+<img alt="Logo Preview" id="adminLogoPreview" style="display:none;width:100%;max-width:240px;height:120px;object-fit:contain;background:#111;border-radius:12px;margin:10px 0;"/>
+<button type="button" onclick="saveAdminLogo()">🖼️ Save Image</button>
+<button onclick="removeAdminLogo()" type="button">🗑️ Remove Custom Logo</button>
+</div></div><div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('splash')">🖼️ Splash Screen <span class="group-chevron" id="chevron-splash">＋</span></button><div class="admin-group-content" id="group-splash" style="display:none;">
+
+<p class="admin-note">App ဖွင့်တဲ့အချိန်ပြမည့် Splash Image / Video ကို ဒီနေရာကနေ သတ်မှတ်နိုင်ပါတယ်။ 9:16 Portrait Image ကိုလည်း support လုပ်ပါတယ်။</p>
+<label>Splash Image</label>
+<input accept="image/png,image/jpeg,image/webp" id="splashImageFile" type="file"/>
+<img alt="Splash Image Preview" id="splashImagePreview" style="display:none;width:100%;max-height:320px;object-fit:contain;background:#111;border-radius:12px;margin:10px 0;"/>
+<button onclick="saveSplashImageSetting()" type="button">💾 Save Splash Image</button>
+<button onclick="removeSplashImageSetting()" type="button">🗑️ Remove Splash Image</button>
+<label style="margin-top:14px;display:block;">Splash Video (MP4, Max 25MB)</label>
+<input accept="video/mp4" id="splashVideoFile" type="file"/>
+<video controls="" id="splashVideoPreview" style="display:none;width:100%;max-height:320px;background:#111;border-radius:12px;margin:10px 0;"></video>
+<button onclick="saveSplashVideoSetting()" type="button">💾 Save Splash Video</button>
+<button onclick="removeSplashVideoSetting()" type="button">🗑️ Remove Splash Video</button>
+</div></div><div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('prices')">💰 Package Prices <span class="group-chevron" id="chevron-prices">＋</span></button><div class="admin-group-content" id="group-prices" style="display:none;">
+
+<div id="adminPackageEditor"></div>
+</div></div><div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('payments')">💳 Payment Options <span class="group-chevron" id="chevron-payments">＋</span></button><div class="admin-group-content" id="group-payments" style="display:none;">
+
+<div id="adminPaymentEditor"></div>
+<button onclick="addAdminPaymentOption()" type="button">+ Add Payment Option</button>
+</div></div><div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('status')">📋 Booking Status <span class="group-chevron" id="chevron-status">＋</span></button><div class="admin-group-content" id="group-status" style="display:none;">
+
+<div id="adminStatusEditor"></div>
+<button onclick="addAdminStatusOption()" type="button">+ Add Status</button>
+</div></div><div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('pin')">🔐 Admin PIN <span class="group-chevron" id="chevron-pin">＋</span></button><div class="admin-group-content" id="group-pin" style="display:none;">
+
+<label>New Admin PIN</label>
+<input id="adminPin" inputmode="numeric" maxlength="12" placeholder="Leave blank to keep current PIN" type="password"/>
+<p class="admin-note">PIN ကို မသိသူတွေ Admin Control Center မဝင်နိုင်အောင် သုံးထားတာပါ။ Local app ဖြစ်လို့ high-security account system မဟုတ်ပါ။</p>
+</div></div>
+<div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('dashboardControl')">📊 Dashboard Control <span class="group-chevron" id="chevron-dashboardControl">＋</span></button><div class="admin-group-content" id="group-dashboardControl" style="display:none;">
+<div id="adminDashboardControlEditor"></div>
+</div></div>
+<div class="admin-section admin-group"><button class="admin-group-button" type="button" aria-expanded="false" onclick="toggleAdminGroup('voucherInterfaceControl')">🧾 Voucher Interface Control <span class="group-chevron" id="chevron-voucherInterfaceControl">＋</span></button><div class="admin-group-content" id="group-voucherInterfaceControl" style="display:none;">
+<div id="adminVoucherInterfaceControlEditor"></div>
+</div></div>
+<div class="admin-actions">
+<button onclick="saveAdminSettings()" type="button">💾 Save Settings</button>
+<button onclick="resetAdminSettings()" type="button">↩️ Reset Default Settings</button>
+<button class="danger-button" onclick="clearAllVouchersFromAdmin()" type="button">🗑️ Delete All Vouchers</button>
+<button onclick="closeAdminControl()" type="button">✕ Close Admin</button>
+</div>
+</div>
+
+<div class="card" id="dashboardSection">
+
+
+<h2 id="dashboardTitle">Dashboard</h2>
+
+
+<div id="dashboard">
+
+Loading...
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card" id="calendarSection">
+
+
+<h2 id="calendarTitle">Booking Calendar</h2>
+
+
+<div id="calendarControl">
+
+
+<button id="previousButton" onclick="changeMonth(-1)">Previous</button>
+
+
+<span id="monthTitle"></span>
+
+
+<button id="nextButton" onclick="changeMonth(1)">Next</button>
+
+
+</div>
+
+
+
+<div id="calendar"></div>
+
+
+<div id="bookingList"></div>
+
+
+
+</div>
+
+
+
+
+
+<div class="card" id="voucherFormSection">
+
+
+<h2 id="newVoucherTitle">Voucher အသစ်ဖန်တီးရန်</h2>
+
+
+<label id="customerLabel">
+Customer အမည်
+</label>
+
+
+<input 
+id="customer" 
+type="text" 
+placeholder="Customer Name">
+
+
+
+<label id="phoneLabel">
+ဖုန်းနံပါတ်
+</label>
+
+
+<input 
+id="phone" 
+type="tel" 
+placeholder="09xxxxxxxxx">
+
+
+
+<label id="locationLabel">
+Location
+</label>
+
+
+<input 
+id="location" 
+type="text" 
+placeholder="Location">
+
+
+
+<label id="packageLabel">
+Package
+</label>
+
+
+<select id="package" onchange="setPackagePrice()">
+
+
+<option value="">
+-- Package ရွေးပါ --
+</option>
+
+
+<option value="Solo Portrait">
+Solo Portrait
+</option>
+
+
+<option value="Couple Photo">
+Couple Photo
+</option>
+
+
+<option value="Family Photo">
+Family Photo
+</option>
+
+
+<option value="Graduation">
+Graduation
+</option>
+
+
+<option value="Wedding Ceremony">
+Wedding Ceremony
+</option>
+
+
+<option value="Novitiation Ceremony">
+Novitiation Ceremony
+</option>
+
+
+<option value="Custom">
+Custom
+</option>
+
+
+</select>
+
+
+<!-- Wedding / Novitiation sub-package options are handled inside the Package function. -->
+<div id="packageSubOptionsBox" class="package-sub-options" style="display:none;">
+  <label id="packageSubLabel">Package Option</label>
+  <select id="packageSubOption" onchange="setIntegratedPackagePrice()">
+    <option value="">Package ရွေးပါ</option>
+  </select>
+</div>
+
+
+<!-- Legacy Wedding / Novitiation Package boxes (kept hidden for data compatibility) -->
+
+<div id="weddingPackageBox" style="display:none;">
+
+
+<label id="weddingPackageLabel">
+Wedding Package
+</label>
+
+
+<select id="weddingPackage" onchange="setWeddingPrice()">
+
+
+
+<option value="">
+Package ရွေးပါ
+</option>
+
+
+
+<option value="50 Pic Package">
+50 Pic Package
+</option>
+
+
+
+<option value="100 Pic Package">
+100 Pic Package
+</option>
+
+
+
+<option value="150 Pic Package">
+150 Pic Package
+</option>
+
+
+
+</select>
+
+
+</div>
+
+
+
+
+<!-- Novitiation Package -->
+
+
+<div id="NovitiationPackageBox" style="display:none;">
+
+
+<label id="novitiationPackageLabel">
+Novitiation Package
+</label>
+
+
+<select id="NovitiationPackage" onchange="setNovitiationPrice()">
+
+
+
+<option value="">
+Package ရွေးပါ
+</option>
+
+
+
+<option value="100 Pic Package">
+100 Pic Package
+</option>
+
+
+
+<option value="150 Pic Package">
+150 Pic Package
+</option>
+
+
+
+<option value="200 Pic Package">
+200 Pic Package
+</option>
+
+
+
+</select>
+
+
+</div>
+
+
+
+
+<label id="shootDateLabel">
+Shooting Date
+</label>
+
+
+<input 
+id="shootDate" 
+type="date">
+
+
+
+
+
+<label id="shootTimeLabel">
+Shooting Time
+</label>
+
+
+<input 
+id="shootTime" 
+type="time">
+
+
+
+
+
+<label id="statusLabel">
+Status
+</label>
+
+
+<select id="status">
+
+
+<option>
+Pending
+</option>
+
+
+<option>
+Confirmed
+</option>
+
+
+<option>
+Completed
+</option>
+
+
+<option>
+Cancelled
+</option>
+
+
+</select>
+
+
+
+
+
+<label id="amountLabel">
+Total Amount
+</label>
+
+
+<input 
+id="amount" 
+type="number" 
+placeholder="100000">
+
+
+
+
+
+<label id="discountLabel">
+Discount Amount
+</label>
+
+
+<input 
+id="discount" 
+type="number" 
+value="0" 
+placeholder="0">
+
+
+
+
+
+<label id="depositLabel">
+Deposit Amount
+</label>
+
+
+<input 
+id="deposit" 
+type="number" 
+placeholder="50000">
+
+
+
+
+
+<label id="paymentStatusLabel">
+Payment Status
+</label>
+
+
+<select id="paymentStatus">
+
+
+<option>
+Unpaid
+</option>
+
+
+<option>
+Paid
+</option>
+
+
+<option>
+Cash
+</option>
+
+
+<option>
+Kpay
+</option>
+
+
+<option>
+Wavepay
+</option>
+
+
+</select>
+
+
+
+
+<label id="noteLabel">
+Note
+</label>
+
+
+<input 
+id="note" 
+type="text" 
+placeholder="Note">
+
+
+
+
+<button id="createVoucherButton" onclick="createVoucher()">Voucher ထုတ်ရန်</button>
+
+
+
+<button id="shareImageButton" type="button" onclick="shareVoucherImage()">📤 Share Image</button>
+
+
+
+<button id="voucherListButton" onclick="showVouchers()">Voucher List</button>
+
+
+<hr>
+
+
+
+<input 
+id="search" 
+type="search" 
+placeholder="Voucher No / Customer Name">
+
+
+<button id="searchButton" onclick="searchVoucher()">Search</button>
+
+
+
+
+<button id="backupButton" onclick="backupData()">Backup</button>
+
+
+
+<button id="restoreButton" onclick="restoreData()">Restore</button>
+
+
+
+
+<div id="result">
+
+
+</div>
+
+
+
+
+
+<!-- Voucher Display Area -->
+
+<div class="card" id="voucherPreviewSection">
+
+
+<h2 id="voucherPreviewTitle">Voucher Preview</h2>
+
+
+<div id="voucherArea">
+
+
+<div id="voucher">
+
+
+<img 
+src="logo_interface_default_white.png" 
+class="voucherLogo"
+onerror="this.style.display='none'">
+
+
+
+<h2 class="business-name">Name</h2>
+
+
+
+<p class="business-subtitle">title</p>
+
+
+
+<hr>
+
+
+<div id="voucherContent">
+
+
+</div>
+
+
+
+<div id="qrcode">
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- Voucher List Area -->
+
+
+<div class="card" id="voucherListSection">
+
+
+<h2 id="voucherListTitle">Voucher List</h2>
+
+
+<div id="voucherList">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="app-navigation">
+    <button type="button" id="backButton" class="nav-back" onclick="goBack()">← Back</button>
+    <button type="button" id="homeButton" class="nav-home" onclick="goHome()">🏠 Home</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    console.log("MZ Voucher System Loaded");
+});
+</script>
+
+</body>
+</html>

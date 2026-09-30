@@ -1,0 +1,866 @@
+*{
+
+box-sizing:border-box;
+
+font-family:"Myanmar Text",Arial,sans-serif;
+
+}
+
+
+
+body{
+
+margin:0;
+
+padding:20px;
+
+background:var(--mz-bg,#f2f2f2);
+
+color:#222;
+
+}
+
+
+
+.header{
+
+text-align:center;
+
+background:#111;
+
+color:white;
+
+padding:25px;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.logo{
+
+width:100px;
+
+height:100px;
+
+object-fit:contain;
+
+border-radius:50%;
+
+background:white;
+
+}
+
+
+
+.header h1{
+
+margin:10px 0;
+
+color:#FFD700;
+
+font-size:28px;
+
+}
+
+
+
+.header p{
+
+margin:0;
+
+letter-spacing:2px;
+
+}
+
+
+
+.card{
+
+background:white;
+
+max-width:700px;
+
+margin:20px auto;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+
+
+h2{
+
+text-align:center;
+
+color:#333;
+
+}
+
+
+
+label{
+
+display:block;
+
+margin-top:15px;
+
+font-weight:bold;
+
+}
+
+
+
+input,
+select{
+
+width:100%;
+
+padding:12px;
+
+margin-top:5px;
+
+border:1px solid #ccc;
+
+border-radius:8px;
+
+font-size:16px;
+
+}
+
+
+button{
+
+width:100%;
+
+padding:14px;
+
+margin-top:15px;
+
+border:2px solid #000;
+
+border-radius:10px;
+
+background:#FFD700;
+
+color:#000;
+
+font-size:16px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+}
+
+
+
+button:hover{
+
+background:#e6c200;
+
+color:#000;
+
+}
+
+
+
+
+
+#dashboard{
+
+display:grid;
+
+gap:10px;
+
+}
+
+
+
+#dashboard p{
+
+background:#eee;
+
+padding:15px;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+/* Voucher Design */
+
+
+#voucher,
+.voucher{
+
+max-width:500px;
+
+margin:20px auto;
+
+background:#000;
+
+color:#fff;
+
+padding:25px;
+
+border-radius:15px;
+
+border:2px solid #FFD700;
+
+}
+
+
+
+#voucher h1,
+#voucher h2,
+.voucher h1{
+
+color:#FFD700;
+
+text-align:center;
+
+}
+
+
+
+#voucher p,
+.voucher p{
+
+border-bottom:1px dashed #666;
+
+padding-bottom:8px;
+
+}
+
+
+
+
+
+.voucherLogo{
+
+width:80px;
+
+height:80px;
+
+object-fit:contain;
+
+display:block;
+
+margin:auto;
+
+border-radius:50%;
+
+background:white;
+
+}
+
+
+
+
+
+#voucherContent{
+
+line-height:1.8;
+
+font-size:16px;
+
+}
+
+
+
+
+
+#qrcode{
+
+text-align:center;
+
+margin:20px;
+
+background:white;
+
+padding:10px;
+
+border-radius:10px;
+
+}
+
+
+
+
+
+hr{
+
+margin:20px 0;
+
+border:0;
+
+border-top:1px solid #ccc;
+
+}
+
+
+
+/* Calendar Design */
+
+
+#calendarControl{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:10px;
+
+margin-bottom:15px;
+
+}
+
+
+
+#calendarControl button{
+
+width:auto;
+
+padding:10px 20px;
+
+margin:0;
+
+}
+
+
+
+
+
+#monthTitle{
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+.calendar{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:15px;
+
+}
+
+
+
+.calendar th,
+.calendar td{
+
+border:1px solid #ccc;
+
+padding:12px;
+
+text-align:center;
+
+cursor:pointer;
+
+}
+
+
+
+.calendar th{
+
+background:#111;
+
+color:white;
+
+}
+
+
+
+.calendar td:hover{
+
+background:#eee;
+
+}
+
+
+
+.booked{
+
+background:#FFD700 !important;
+
+font-weight:bold;
+
+color:#000;
+
+}
+
+
+
+
+
+#bookingList{
+
+margin-top:15px;
+
+}
+
+
+
+
+
+#voucherList{
+
+display:grid;
+
+gap:15px;
+
+}
+
+
+
+
+
+.voucherItem{
+
+background:#f5f5f5;
+
+padding:15px;
+
+border-radius:10px;
+
+border-left:5px solid #FFD700;
+
+}
+
+
+
+
+
+#result{
+
+margin-top:20px;
+
+}
+
+
+
+
+
+#result p{
+
+background:#eee;
+
+padding:10px;
+
+border-radius:8px;
+
+}
+
+
+
+
+/* Mobile Responsive */
+
+
+@media(max-width:600px){
+
+
+body{
+
+padding:10px;
+
+}
+
+
+
+.card{
+
+padding:15px;
+
+margin:15px auto;
+
+}
+
+
+
+.header{
+
+padding:20px;
+
+}
+
+
+
+.header h1{
+
+font-size:24px;
+
+}
+
+
+
+.header p{
+
+font-size:14px;
+
+}
+
+
+
+button{
+
+font-size:15px;
+
+}
+
+
+
+input,
+select{
+
+font-size:15px;
+
+}
+
+
+
+#calendarControl{
+
+flex-direction:column;
+
+}
+
+
+
+#calendarControl button{
+
+width:100%;
+
+}
+
+
+}
+
+
+
+
+
+/* Share Image Clean Area */
+
+
+#shareTarget{
+
+background:white;
+
+padding:20px;
+
+}
+
+
+/* App Back / Home navigation */
+.app-navigation{
+    display:flex;
+    gap:12px;
+    margin:20px auto 30px;
+    max-width:900px;
+    padding:0 16px;
+    box-sizing:border-box;
+    position:sticky;
+    bottom:10px;
+    z-index:1000;
+}
+.app-navigation button{
+    flex:1;
+    min-height:54px;
+    font-size:18px;
+    font-weight:700;
+    border:2px solid #111;
+    border-radius:14px;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.18);
+}
+.app-navigation .nav-back{
+    background:#ffd400;
+    color:#111;
+}
+.app-navigation .nav-home{
+    background:#111;
+    color:#ffd400;
+    border-color:#ffd400;
+}
+.app-navigation button:active{transform:scale(.98);}
+@media print{.app-navigation{display:none !important;}}
+
+
+/* Booking Calendar - fixed responsive layout */
+#calendar { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+#calendar .calendar { width:100%; min-width:320px; table-layout:fixed; }
+#calendar .calendar td { height:52px; padding:6px 3px; position:relative; vertical-align:middle; }
+#calendar .calendar td.empty-day { background:#fafafa; cursor:default; }
+.booking-count { display:block; font-size:11px; margin-top:3px; font-weight:bold; }
+.calendar-hint { margin-top:12px; padding:12px; border-radius:8px; background:#f1f1f1; text-align:center; }
+.booking-date-title { margin-top:12px; padding:12px; background:#111; color:#FFD700; border-radius:8px; font-weight:bold; }
+.booking-item { margin-top:10px; padding:12px; background:#f5f5f5; border-radius:8px; border-left:4px solid #FFD700; }
+.booking-item button { width:auto; margin-top:8px; padding:8px 14px; }
+@media(max-width:600px){
+  #calendarControl { display:grid; grid-template-columns:1fr; gap:8px; }
+  #monthTitle { order:-1; text-align:center; font-size:20px; padding:5px; }
+  #calendar .calendar th, #calendar .calendar td { padding:6px 2px; font-size:13px; }
+}
+
+
+/* ============================================================
+   Admin Control Center
+   ============================================================ */
+:root{
+    --mz-bg:#f2f2f2;
+    --mz-primary:#FFD700;
+    --mz-dark:#111111;
+}
+body{background:var(--mz-bg);}
+.header{background:var(--mz-dark);}
+.header h1{color:var(--mz-primary);}
+button{background:var(--mz-primary);}
+#voucher,.voucher{border-color:var(--mz-primary);}
+#voucher h1,#voucher h2,.voucher h1{color:var(--mz-primary);}
+.admin-entry-card{padding:12px 25px;}
+.admin-button{background:var(--mz-dark);color:var(--mz-primary);border-color:var(--mz-primary);}
+.admin-panel{border:2px solid var(--mz-primary);background:#111;color:#fff;}
+.admin-panel h2{color:var(--mz-primary);}
+.admin-panel h3{color:var(--mz-primary);margin:0 0 10px;}
+.admin-panel h4{color:var(--mz-primary);margin:18px 0 8px;}
+.admin-panel label{color:#fff;}
+.admin-panel input,.admin-panel select{background:#fff;color:#111;}
+.admin-note{font-size:13px;opacity:.85;line-height:1.5;}
+.admin-section{border:1px solid #555;border-radius:12px;padding:15px;margin:15px 0;}
+.admin-price-row,.admin-option-row{display:flex;gap:10px;align-items:center;margin:8px 0;}
+.admin-price-row span{flex:1;font-weight:bold;}
+.admin-price-row input{max-width:190px;margin:0;}
+.admin-option-row input{flex:1;margin:0;}
+.admin-option-row button{width:auto;margin:0;padding:10px 12px;}
+.admin-actions{display:grid;gap:8px;}
+.admin-actions button{margin-top:0;}
+.danger-button,.small-danger{background:#d62828 !important;color:#fff !important;border-color:#fff !important;}
+@media(max-width:600px){
+ .admin-price-row{flex-direction:column;align-items:stretch;}
+ .admin-price-row input{max-width:none;}
+ .admin-option-row{align-items:stretch;}
+ .admin-option-row button{min-width:90px;}
+}
+
+
+/* Admin Control Center - live customization */
+.dashboard-package-prices{
+    margin-top:14px;
+    padding:14px;
+    border:2px solid var(--mz-primary,#FFD700);
+    border-radius:12px;
+    background:#fff;
+}
+.dashboard-package-prices h3,
+.dashboard-package-prices h4{
+    margin:8px 0;
+}
+.dashboard-package-prices p{
+    margin:6px 0 !important;
+    padding:8px !important;
+}
+
+.dashboard-price-toggle{
+    width:100%;
+    padding:12px 14px;
+    margin-top:8px;
+    border:1px solid var(--mz-primary);
+    border-radius:8px;
+    background:var(--mz-dark);
+    color:var(--mz-primary);
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+}
+#dashboardPackagePricesContent{
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    background:rgba(255,255,255,.06);
+}
+
+
+.admin-package-tools{margin-bottom:12px;}
+.admin-add-package{width:100%;border:2px solid var(--mz-primary,#FFD700);background:var(--mz-dark,#111);color:var(--mz-primary,#FFD700);font-weight:700;padding:12px;border-radius:10px;cursor:pointer;}
+.admin-add-package:active{transform:scale(.99);}
+
+
+.application-name{margin:4px 0 0;font-size:12px;opacity:.7;text-align:center;}
+.admin-custom-row{display:grid;grid-template-columns:1fr;gap:6px;margin:8px 0;}
+.admin-custom-row input{width:100%;box-sizing:border-box;}
+.admin-package-edit-row{display:grid;grid-template-columns:minmax(0,1fr) 120px auto;gap:6px;align-items:center;}
+.admin-package-edit-row input{min-width:0;}
+@media (max-width:600px){.admin-package-edit-row{grid-template-columns:1fr 110px auto;}}
+
+/* Customize Settings - Function toggles / Add Options */
+.admin-subsection{border:1px solid #555;border-radius:12px;padding:12px;margin:12px 0;background:rgba(255,255,255,.03);}
+.admin-toggle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.admin-toggle-row{display:flex !important;align-items:center;justify-content:space-between;gap:10px;background:#1b1b1b;border:1px solid #444;border-radius:9px;padding:10px 12px;box-sizing:border-box;}
+.admin-toggle-row input,.mini-toggle input{width:auto !important;margin:0 !important;accent-color:var(--mz-primary,#FFD700);}
+.mini-toggle{display:flex !important;align-items:center;gap:5px;white-space:nowrap;}
+.admin-custom-label-row{grid-template-columns:1fr 1.1fr 1fr 110px auto;align-items:center;}
+.admin-custom-label-row input,.admin-custom-label-row select,.admin-custom-label-row button{margin:0;min-width:0;}
+.admin-main-package-row{grid-template-columns:1fr 120px 70px auto;align-items:center;}
+.admin-main-package-row input,.admin-main-package-row button{margin:0;min-width:0;}
+@media(max-width:700px){
+ .admin-toggle-grid{grid-template-columns:1fr;}
+ .admin-custom-label-row,.admin-main-package-row{grid-template-columns:1fr;}
+ .admin-custom-label-row .mini-toggle,.admin-main-package-row .mini-toggle{justify-self:start;}
+}
+
+
+/* Customize Settings: Wedding / Novitiation stay inside Package function */
+.admin-package-subtoggle{
+  grid-column:1 / -1;
+  margin:-4px 0 8px 18px;
+  padding:8px 10px;
+  border-left:2px solid #d4af37;
+  background:rgba(212,175,55,.06);
+  border-radius:0 8px 8px 0;
+}
+.admin-subtoggle-title{font-size:13px;font-weight:700;margin-bottom:5px;}
+.admin-nested-toggle{margin:4px 0;}
+
+
+/* Wedding / Novitiation are selected inside the main Package function. */
+.package-sub-options {
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid rgba(212,175,55,.35);
+    border-radius: 10px;
+    background: rgba(0,0,0,.18);
+}
+.package-sub-options label {
+    display: block;
+    margin-bottom: 6px;
+}
+.package-sub-options select {
+    width: 100%;
+}
+
+
+/* Admin Control Center */
+:root{
+    --mz-bg:#f2f2f2;
+    --mz-primary:#FFD700;
+    --mz-dark:#111111;
+}
+.admin-entry-card{padding:12px 25px;}
+.admin-button{background:var(--mz-dark);color:var(--mz-primary);border-color:var(--mz-primary);}
+.admin-panel{border:2px solid var(--mz-primary);background:#111;color:#fff;}
+.admin-panel h2{color:var(--mz-primary);}
+.admin-panel h3{color:var(--mz-primary);margin:0 0 10px;}
+.admin-panel h4{color:var(--mz-primary);margin:18px 0 8px;}
+.admin-panel label{color:#fff;}
+.admin-panel input,.admin-panel select{background:#fff;color:#111;}
+.admin-note{font-size:13px;opacity:.85;line-height:1.5;}
+.admin-section{border:1px solid #555;border-radius:12px;padding:15px;margin:15px 0;}
+.admin-price-row,.admin-option-row{display:flex;gap:10px;align-items:center;margin:8px 0;}
+.admin-price-row span{flex:1;font-weight:bold;}
+.admin-price-row input{max-width:190px;margin:0;}
+.admin-option-row input{flex:1;margin:0;}
+.admin-option-row button{width:auto;margin:0;padding:10px 12px;}
+.admin-actions{display:grid;gap:8px;}
+.admin-actions button{margin-top:0;}
+.admin-price-row{flex-direction:column;align-items:stretch;}
+.admin-price-row input{max-width:none;}
+.admin-option-row{align-items:stretch;}
+.admin-option-row button{min-width:90px;}
+.admin-package-tools{margin-bottom:12px;}
+.admin-add-package{width:100%;border:2px solid var(--mz-primary,#FFD700);background:var(--mz-dark,#111);color:var(--mz-primary,#FFD700);font-weight:700;padding:12px;border-radius:10px;cursor:pointer;}
+.admin-add-package:active{transform:scale(.99);}
+
+/* Admin Control Center button groups */
+.admin-group { margin: 10px 0; }
+.admin-group-button {
+  width:100%; display:flex; align-items:center; justify-content:space-between;
+  gap:10px; padding:14px 16px; border:1px solid rgba(255,215,0,.35);
+  border-radius:12px; background:#171717; color:#FFD700; font-size:16px;
+  font-weight:700; text-align:left; cursor:pointer; box-sizing:border-box;
+}
+.admin-group-button:active { transform:scale(.99); }
+.admin-group-content { display:none; padding:14px 4px 4px; }
+.admin-group-content.open { display:block; }
+#adminPanel .admin-group-content{display:none !important; padding:14px 4px 4px;}
+#adminPanel .admin-group-content.open{display:block !important;}
+#adminPanel .admin-group-content[hidden]{display:none !important;}
+#adminPanel .admin-group-button{margin-bottom:0;}
+#adminPanel .admin-group{overflow:hidden;}
+#adminPanel .admin-group-button{width:100%;display:flex;align-items:center;justify-content:space-between;}
+
+
+/* ============================================================
+   Dashboard Control / Description Options - additive update
+   ============================================================ */
+.dashboard-description-option{
+    margin-top:12px;
+    padding:14px 16px;
+    border-radius:10px;
+    background:#fff;
+    border:1px solid #ddd;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.dashboard-description-name{
+    font-weight:700;
+    margin-bottom:5px;
+    color:#111;
+}
+.dashboard-description-text{
+    line-height:1.6;
+    white-space:pre-wrap;
+}
+.admin-dashboard-description-row{
+    display:grid;
+    grid-template-columns:1fr 2fr auto auto;
+    gap:8px;
+    align-items:center;
+}
+.admin-dashboard-description-row input{
+    margin-top:0;
+}
+@media(max-width:600px){
+    .admin-dashboard-description-row{
+        grid-template-columns:1fr;
+    }
+    .admin-dashboard-description-row .mini-toggle,
+    .admin-dashboard-description-row .small-danger{
+        width:100%;
+    }
+}
+
+/* Voucher Interface Control Add-on */
+.admin-control-heading{font-weight:700;margin:6px 0;padding-bottom:4px;border-bottom:1px solid rgba(128,128,128,.25)}
+.voucher-custom-options{margin:10px 0 12px;padding:10px;border-radius:10px;background:rgba(0,0,0,.035)}
+.voucher-custom-option-label{display:block;font-weight:600;margin-top:8px}
+.voucher-custom-option-input{width:100%;box-sizing:border-box;margin-top:5px}
+.voucher-custom-option-input textarea{min-height:70px}
+
+/* iOS/PWA compatibility splash - only shown at startup */
+#iosSplash{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .25s ease}
+#iosSplash img,#iosSplash video{width:100%;height:100%;object-fit:contain;background:#000;display:none}
+#iosSplash img.active,#iosSplash video.active{display:block}
